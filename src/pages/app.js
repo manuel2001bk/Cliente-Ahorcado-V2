@@ -24,30 +24,32 @@ class App extends React.Component {
             <body>
                 <h1>Bienvenido al juego del Horcado.</h1>
                 <div  className="card">
-                    <div className="inputLetra">
-                        <div className="form-floating mb-3">
-                            <input id="letraeEntrada"
-                                   type="text"
-                                   className="form-control"
-                                   placeholder="Letra a buscar"
-                                   maxLength="1"/>
-                            <label htmlFor="floatingInput">Letra a Buscar</label>
+                    <div className="carta">
+                        <div className="inputLetra">
+                            <div className="form-floating mb-3">
+                                <input id="letraeEntrada"
+                                       type="text"
+                                       className="form-control"
+                                       placeholder="Letra a buscar"
+                                       maxLength="1"/>
+                                <label htmlFor="floatingInput">Letra a Buscar</label>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <button id="IngresarLetra"
-                                className="btn btn-success"
-                                onClick={this.ingresarletra.bind(this)}>Ingresar Letra</button>
-                    </div>
-                    <div className="imagenHorcado">
-                        <img id="imagenHorcado"
-                             src={imagen1}
-                             className="card-img-top"/>
-                    </div>
-                    <div>
-                        <p id="palabraGuiones" >
+                        <div>
+                            <button id="IngresarLetra"
+                                    className="btn btn-outline-success"
+                                    onClick={this.ingresarletra.bind(this)}>Ingresar Letra</button>
+                        </div>
+                        <div className="imagenHorcado">
+                            <img id="imagenHorcado"
+                                 src={imagen1}
+                                 className="card-img-top"/>
+                        </div>
+                        <div>
+                            <p id="palabraGuiones" >
 
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </body>
