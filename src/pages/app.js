@@ -7,6 +7,8 @@ import imagen3 from '../assets/img/horcado3.png'
 import imagen4 from '../assets/img/horcado4.png'
 import imagen5 from '../assets/img/horcado5.png'
 
+
+
 import { io } from "socket.io-client";
 
 
@@ -17,9 +19,11 @@ class App extends React.Component {
         this.state = {
             palabra : "",
             palabraConGuiones : '',
-            letra : ""
+            letra : "",
+            fallos : 1
         }
-       this.socket = io("ws://localhost:3000")
+        this.socket = io("ws://localhost:3000")
+        this.imagenes = [imagen1,imagen2,imagen3,imagen4,imagen5]
     }
     changeField(e) {
         let field = e.target.name
@@ -34,15 +38,25 @@ class App extends React.Component {
         String.prototype.replaceAt = function(index, character) {
             return this.substr(0, index) + character + this.substr(index+character.length);
         }
-        for (const i in this.state.palabra){
-            if(this.state.letra == this.state.palabra[i]){
-                //alert("exito")
-                this.state.palabraConGuiones = this.state.palabraConGuiones.replaceAt(i*2, this.state.letra);
-                this.palabraGuiones.innerHTML = this.state.palabraConGuiones
+        if(this.state.fallos != 5){
+            var fallo = true;
+            for (const i in this.state.palabra){
+                if(this.state.letra == this.state.palabra[i]){
+                    //alert("exito")
+                    this.state.palabraConGuiones = this.state.palabraConGuiones.replaceAt(i*2, this.state.letra);
+                    this.palabraGuiones.innerHTML = this.state.palabraConGuiones
+                    fallo = false;
+                }
             }
+            if(fallo){
+                this.imagen.src = this.imagenes[this.state.fallos]
+                this.state.fallos = this.state.fallos+1
+            }
+            console.log(this.state.fallos)
+            //console.log(this.state.palabraConGuiones)
+        }else{
+            alert('Juego terminado')
         }
-        console.log(this.state.palabra)
-        console.log(this.state.palabraConGuiones)
     }
     iniciarJuego(e){
         if(this.state.palabra.length == '' ){
@@ -95,6 +109,7 @@ class App extends React.Component {
                         </div>
                         <div className="imagenHorcado">
                             <img id="imagenHorcado"
+                                 ref={self => this.imagen = self}
                                  src={imagen1}
                                  className="card-img-top"/>
                         </div>
