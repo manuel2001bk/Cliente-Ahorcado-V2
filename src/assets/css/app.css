@@ -1,4 +1,4 @@
-body{
+.body-game{
     margin-right: 5%;
     margin-left: 5%;
     margin-top: 2%;
@@ -7,8 +7,8 @@ body{
     background: #bfe0fa;
 }
 .inputLetra{
-    margin-right: 37%;
-    margin-left: 37%;
+
+    margin-left: 15%;
     margin-top: 2%;
     align-items: center;
     text-align: center;
