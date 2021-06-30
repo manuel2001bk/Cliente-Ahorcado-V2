@@ -4,21 +4,45 @@ body{
     margin-top: 2%;
     align-items: center;
     text-align: center;
-    background: #a0e5fa;
+    background: white;
 }
 .body-game{
-    background: #b0ddff;
+    border-radius: 5px;
+    background: #b798e0;
+    color: black;
 
 }
-.inputLetra{
+#TextArea{
+    text-align: center;
+}
+#iniciarJuego{
+    margin-right: 50%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    text-align: end;
+    border-radius: 5px ;
+    background: #ffe4f4;
+    border-color: black;
+    border-width: 2px;
+}
+#inputLetra{
 
     margin-left: 15%;
     margin-top: 2%;
+
     align-items: center;
     text-align: center;
 }
-.carta{
-
+#IngresarLetra{
+    margin-right: 59%;
+    background: #ffe4f4;
+    border-color: black;
+    border-width: 2px;
+    color: #000;
+    font-weight: normal;
+}
+.card{
+   background: #f8efed;
 }
 .imagenHorcado{
     margin-right: 41%;

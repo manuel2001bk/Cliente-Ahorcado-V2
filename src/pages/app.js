@@ -72,19 +72,19 @@ class App extends React.Component {
 
     render(){
         return (
+
             <div className="body-game">
                 <h1>Bienvenido al juego del Horcado.</h1>
                 <div  className="card">
                     <div className="carta">
-                        <h5>Introduzca una letra para ver si existe.</h5>
+                        <h5>Presione el boton de iniciar y después introduzca una letra para ver si existe.</h5>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button id="iniciarJuego"
-                                    className="btn btn-outline-success"
                                     onClick={this.iniciarJuego.bind(this)}>Iniciar</button>
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-4">
-                                <div className="inputLetra">
+                                <div className="inputLetra" id="TextArea">
                                     <div className="form-floating mb-3">
                                         <input id="letra"
                                                name="letra"
