@@ -1,6 +1,6 @@
 body{
-    margin-right: 5%;
-    margin-left: 5%;
+    margin-right: 15%;
+    margin-left: 15%;
     margin-top: 2%;
     align-items: center;
     text-align: center;
@@ -24,18 +24,27 @@ body{
     background: #ffe4f4;
     border-color: black;
     border-width: 2px;
+    color: #000;
 }
 #inputLetra{
 
-    margin-left: 15%;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-top: 2%;
 
     align-items: center;
     text-align: center;
 }
 #IngresarLetra{
-    margin-right: 59%;
+    margin-right: 9%;
     background: #ffe4f4;
+    border-color: black;
+    border-width: 2px;
+    color: #000;
+    font-weight: normal;
+}
+#letraBuscada{
+    margin-right: 9%;
     border-color: black;
     border-width: 2px;
     color: #000;

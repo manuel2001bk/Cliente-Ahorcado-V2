@@ -97,7 +97,7 @@ class App extends React.Component {
                 <div  className="card">
                     <div className="carta">
                         <h5>Introduzca una letra para ver si existe.</h5>
-                        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <div className="d-grid gap-2 d-md-flex justify-content-md-center">
                             <button id="iniciarJuego"
                                     className="btn btn-outline-success"
                                     onClick={this.iniciarJuego.bind(this)}
@@ -105,7 +105,7 @@ class App extends React.Component {
                         </div>
                         <div className="row justify-content-center">
                             <div className="col">
-                                <div className="inputLetra">
+                                <div id="inputLetra">
                                     <div className="form-floating mb-3">
                                         <input id="letra"
                                                name="letra"
@@ -123,11 +123,10 @@ class App extends React.Component {
                                     <button id="IngresarLetra"
                                             className="btn btn-outline-primary"
                                             onClick={this.ingresarletra.bind(this)}>Ingresar Letra</button>
+                                    <h2 id="letraBuscada" ref={self => this.palabraGuiones = self}></h2>
                                 </div>
                             </div>
-                            <div className="col">
-                                <h2 ref={self => this.palabraGuiones = self}></h2>
-                            </div>
+
                             <div className="col">
                                 <div className="imagenHorcado">
                                     <img id="imagenHorcado"
