@@ -33,8 +33,18 @@ class App extends React.Component {
             [field] : {$set : value}
         }))
     }
-
+    resetJuego(){
+        this.iniciar.innerHTML = "iniciar"
+        this.state.palabra = ''
+        this.state.palabraConGuiones = ''
+        this.palabraGuiones.innerHTML = ''
+        this.state.letra = ''
+        this.state.fallos = 1
+        this.imagen.src = this.imagenes[0]
+        this.letra.value =''
+    }
     ingresarletra(e){
+
         String.prototype.replaceAt = function(index, character) {
             return this.substr(0, index) + character + this.substr(index+character.length);
         }
@@ -51,12 +61,19 @@ class App extends React.Component {
             if(fallo){
                 this.imagen.src = this.imagenes[this.state.fallos]
                 this.state.fallos = this.state.fallos+1
+            }else {
+                if(this.state.palabraConGuiones.indexOf('_') < 0){
+                    alert("Has hacertado todas las palabras con exito")
+                    this.resetJuego();
+                }
             }
-            console.log(this.state.fallos)
+            //console.log(this.state.fallos)
             //console.log(this.state.palabraConGuiones)
         }else{
             alert('Juego terminado')
+            this.resetJuego()
         }
+        this.letra.value =''
     }
     iniciarJuego(e){
         if(this.state.palabra.length == '' ){
@@ -69,14 +86,7 @@ class App extends React.Component {
             });
             this.iniciar.innerHTML = "Reiniciar"
         }else {
-            this.iniciar.innerHTML = "iniciar"
-            this.state.palabra = ''
-            this.state.palabraConGuiones = ''
-            this.palabraGuiones.innerHTML = '_'
-            this.state.letra = ''
-            this.state.fallos = 1
-            this.imagen.src = this.imagenes[0]
-            this.letra.value =''
+            this.resetJuego()
         }
     }
 
@@ -90,10 +100,11 @@ class App extends React.Component {
                         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button id="iniciarJuego"
                                     className="btn btn-outline-success"
-                                    onClick={this.iniciarJuego.bind(this)}>Iniciar</button>
+                                    onClick={this.iniciarJuego.bind(this)}
+                                    ref={self => this.iniciar = self}>Iniciar</button>
                         </div>
                         <div className="row justify-content-center">
-                            <div className="col-4">
+                            <div className="col">
                                 <div className="inputLetra">
                                     <div className="form-floating mb-3">
                                         <input id="letra"
@@ -102,27 +113,34 @@ class App extends React.Component {
                                                className="form-control"
                                                placeholder="Letra a buscar"
                                                value={this.state.label}
+                                               ref={self => this.letra = self}
                                                onChange={this.changeField.bind(this)}
                                                maxLength="1"/>
                                         <label htmlFor="floatingInput">Letra a Buscar</label>
                                     </div>
                                 </div>
+                                <div className="align-self-center">
+                                    <button id="IngresarLetra"
+                                            className="btn btn-outline-primary"
+                                            onClick={this.ingresarletra.bind(this)}>Ingresar Letra</button>
+                                </div>
                             </div>
-                            <div className="col-4">
+                            <div className="col">
                                 <h2 ref={self => this.palabraGuiones = self}></h2>
                             </div>
+                            <div className="col">
+                                <div className="imagenHorcado">
+                                    <img id="imagenHorcado"
+                                         ref={self => this.imagen = self}
+                                         src={imagen1}
+                                         className="card-img-top"/>
+                                </div>
+                            </div>
+
+
                         </div>
-                        <div>
-                            <button id="IngresarLetra"
-                                    className="btn btn-outline-primary"
-                                    onClick={this.ingresarletra.bind(this)}>Ingresar Letra</button>
-                        </div>
-                        <div className="imagenHorcado">
-                            <img id="imagenHorcado"
-                                 ref={self => this.imagen = self}
-                                 src={imagen1}
-                                 className="card-img-top"/>
-                        </div>
+
+
 
                     </div>
                 </div>
