@@ -45,9 +45,10 @@ body{
    background: #f8efed;
 }
 .imagenHorcado{
-    margin-right: 41%;
-    margin-left: 41%;
+    margin-right: 20%;
+    margin-left: 20%;
     margin-top: 2%;
     align-items: center;
+    margin-inside: 2%;
 
 }
