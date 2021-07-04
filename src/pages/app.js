@@ -44,40 +44,45 @@ class App extends React.Component {
         this.letra.value =''
     }
     ingresarletra(e){
+        if(this.state.palabra.length != ''){
+            String.prototype.replaceAt = function(index, character) {
+                return this.substr(0, index) + character + this.substr(index+character.length);
+            }
+            if(this.state.fallos != 5){
+                var fallo = true;
+                for (const i in this.state.palabra){
+                    if(this.state.letra == this.state.palabra[i]){
+                        //alert("exito")
+                        this.state.palabraConGuiones = this.state.palabraConGuiones.replaceAt(i*2, this.state.letra);
+                        this.palabraGuiones.innerHTML = this.state.palabraConGuiones
+                        fallo = false;
+                    }
+                }
+                if(fallo){
+                    this.imagen.src = this.imagenes[this.state.fallos]
+                    this.state.fallos = this.state.fallos+1
+                }else {
+                    if(this.state.palabraConGuiones.indexOf('_') < 0){
+                        alert("Has hacertado todas las palabras con exito")
+                        this.resetJuego();
+                    }
+                }
+                //console.log(this.state.fallos)
+                //console.log(this.state.palabraConGuiones)
+            }else{
+                alert('Juego terminado')
+                this.resetJuego()
+            }
+        }
+        else {
+            alert("Debes iniciar primero el juego")
+        }
 
-        String.prototype.replaceAt = function(index, character) {
-            return this.substr(0, index) + character + this.substr(index+character.length);
-        }
-        if(this.state.fallos != 5){
-            var fallo = true;
-            for (const i in this.state.palabra){
-                if(this.state.letra == this.state.palabra[i]){
-                    //alert("exito")
-                    this.state.palabraConGuiones = this.state.palabraConGuiones.replaceAt(i*2, this.state.letra);
-                    this.palabraGuiones.innerHTML = this.state.palabraConGuiones
-                    fallo = false;
-                }
-            }
-            if(fallo){
-                this.imagen.src = this.imagenes[this.state.fallos]
-                this.state.fallos = this.state.fallos+1
-            }else {
-                if(this.state.palabraConGuiones.indexOf('_') < 0){
-                    alert("Has hacertado todas las palabras con exito")
-                    this.resetJuego();
-                }
-            }
-            //console.log(this.state.fallos)
-            //console.log(this.state.palabraConGuiones)
-        }else{
-            alert('Juego terminado')
-            this.resetJuego()
-        }
         this.letra.value =''
     }
     iniciarJuego(e){
         if(this.state.palabra.length == '' ){
-            this.socket.emit('getPalabra', 'Servidor echo');
+            this.socket.emit('getPalabra', );
 
             this.socket.on('Server:palabra', (data) => {
                 this.state.palabra = data;
