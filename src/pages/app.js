@@ -20,7 +20,7 @@ class App extends React.Component {
             palabra : "",
             palabraConGuiones : '',
             letra : "",
-            fallos : 1
+            fallos : 0
         }
         this.socket = io("ws://localhost:3000")
         this.imagenes = [imagen1,imagen2,imagen3,imagen4,imagen5]
@@ -48,7 +48,7 @@ class App extends React.Component {
             String.prototype.replaceAt = function(index, character) {
                 return this.substr(0, index) + character + this.substr(index+character.length);
             }
-            if(this.state.fallos != 5){
+            if(this.state.fallos <= 4){
                 var fallo = true;
                 for (const i in this.state.palabra){
                     if(this.state.letra == this.state.palabra[i]){
