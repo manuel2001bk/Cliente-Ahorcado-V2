@@ -1,0 +1,17 @@
+body{
+    align-items: center;
+    text-align: center;
+    background: #62dcf1;
+}
+.cuerpoLogin{
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top: 15%;
+    align-items: center;
+    text-align: center;
+}
+.body-game{
+    border-radius: 20px;
+    background: #ae7bf1;
+    color: black;
+}
